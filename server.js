@@ -14,9 +14,15 @@ io.on("connection", (socket) => {
     console.log(`${username} har joinat!`);
 
     socket.on("join_room", (room) => {
-      socket.join(`${username} join ${room}`);
+      socket.join(room);
+
       console.log(io.sockets.adapter.rooms);
     });
+  });
+
+  socket.on("leave", (room) => {
+    socket.leave(room);
+    console.log(io.sockets.adapter.rooms);
   });
 
   //   socket.on("join_room", (room) => {
