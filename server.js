@@ -14,8 +14,7 @@ io.on("connection", (socket) => {
     console.log(`${username} har joinat!`);
 
     socket.on("join_room", (room) => {
-      socket.join(room);
-
+      socket.join(room, `${room}`);
       console.log(io.sockets.adapter.rooms);
     });
   });
@@ -23,6 +22,7 @@ io.on("connection", (socket) => {
   socket.on("leave", (room) => {
     socket.leave(room);
     console.log(io.sockets.adapter.rooms);
+    console.log(room);
   });
 
   //   socket.on("join_room", (room) => {
@@ -35,8 +35,13 @@ io.on("connection", (socket) => {
   //     console.log(io.sockets.adapter.rooms);
   //   });
 
-  socket.on("message", (msg) => {
-    io.to("join_room").emit("message", msg);
+  socket.on("message", (obj) => {
+    io.to("join_room", obj.room).emit("message", obj);
+  });
+
+  socket.on("output-message", (obj) => {
+    console.log(obj);
+    io.to(obj.room).emit("output-message", obj);
   });
 
   socket.on("disconnect", () => {
