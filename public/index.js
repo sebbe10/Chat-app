@@ -4,6 +4,10 @@ let sendToTheRoom = document.querySelector(".sendToTheRoom");
 let theList = document.querySelector(".theList");
 let theListRoom = document.querySelector(".theListRoom");
 
+let empty = [];
+
+for (let i = 0; i < empty.length; i++) {}
+
 let sendInTheRoom = () => {
   socket.connect();
   let writeName = document.querySelector(".writeName").value;
@@ -12,8 +16,6 @@ let sendInTheRoom = () => {
 
   console.log(writeName);
   console.log(room);
-
-  //   writeName.value = "";
 
   socket.emit("user_connect", writeName);
 
