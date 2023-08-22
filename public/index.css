@@ -35,3 +35,24 @@
   text-align: center;
   text-decoration: underline 2px solid darkblue;
 }
+
+li {
+  list-style: none;
+}
+
+.styleli {
+  width: 100px;
+  border: 2px solid black;
+}
+
+.styleroom {
+  display: flex;
+  justify-content: center;
+}
+
+.stylechatt {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

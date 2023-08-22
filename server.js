@@ -10,7 +10,7 @@ app.use(express.static("public"));
 io.on("connection", (socket) => {
   console.log("A user has connect: ", socket.id);
   socket.on("user_connect", (username) => {
-    io.emit("a_user_has_connect", username);
+    socket.broadcast.emit("a_user_has_connect", username);
     console.log(`${username} har joinat!`);
 
     socket.on("join_room", (room) => {
